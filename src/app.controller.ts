@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import * as os from 'os';
 import { AppService } from './app.service';
 import { calcEventLocation } from './calcEventLoc';
 import { formatGpsData } from './format';
@@ -16,6 +17,8 @@ export class AppController {
     const eventTime = 29563;
     const finalGps = calcEventLocation(eventTime, formatted);
     console.log(finalGps.gps);
+    console.log(os.type());
+    console.log(os.release());
     const [major, minor, patch] = process.versions.node.split('.').map(Number);
     console.log(major, ' ', minor, ' ', patch);
     return 'ee';
